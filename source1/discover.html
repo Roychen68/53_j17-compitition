@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <style>
+         .card{
+            width: 1600px;
+            height: 500px;
+            margin: auto;
+            display: flex;
+        }
+        .row{
+            height: auto;
+        }
+        .col-8{
+            width: 200px;
+            height: 495px;
+        }
+        .card-body{
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="header"></div>
+      <div class="card">
+            <div class="row">
+            <img src="./img/Jpeg.jpg" alt="" class="col-8">
+            <div class="card-body">
+                <h1 class="col-10">this is first picture</h1>
+                <p class="card-text">click to change picture</p>
+            </div>
+        </div>
+      </div>
+</body>
+</html>
+<script src="jquery.js"></script>
+<script>
+    $(".header").load("header.html");
+    
+    const $image = $(".col-8");
+    const $imageSources = ["./img/Jpeg.jpg" , "./img/Png.png"];
+    const $tilte = $(".col-10")
+    const $textSources = ["this is the first picture","this is the second picture"]
+    let currentIndex = 0;
+    let text = 0;
+    function toggleImage() {
+        currentIndex = (currentIndex + 1) % $imageSources.length;
+        $image.attr("src", $imageSources[currentIndex]);
+        text = (text + 1) % $textSources.length;
+        $tilte.text($textSources[text]);
+    }
+
+    $image.click(toggleImage);
+</script>

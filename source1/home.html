@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .slide{
+      margin: auto;
+    }
+    .slide-box{
+      position: relative;
+      max-width: 1000px;
+      user-select: none;
+      width: 768px;
+      margin: auto;
+    }
+    .slide-text{
+      text-align: center;
+    }
+    .prev, .next {
+    z-index: 5;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    }
+    .next{
+    right: 0;
+    }
+    .dot {
+    cursor: pointer;
+    height: 15px; 
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    user-select: none;
+    }
+    .dot:active,
+    .dot:hover{
+      background-color: rgba(0,0,0,0.6);
+    }
+  </style>
+</head>
+<body>
+  <div class="header"></div>
+  <div class="slide-box">
+      <img class="slide" src="./img/Png (1).png" alt="" style="width: 768px;">
+      <div>
+        <p class="slide-text">the first slide of text</p>
+    </div>
+    <span class="prev">&lt;</span>
+    <span class="next">&gt;</span>
+  </div>
+  <br>
+
+  <div style="text-align:center;user-select: none;">
+    <span class="dot" onclick="currentSlide(0)" data-slide="0"></span>
+    <span class="dot" onclick="currentSlide(1)" data-slide="1"></span>
+    <span class="dot" onclick="currentSlide(2)" data-slide="2"></span>
+  </div>
+</body>
+</html>
+<script src="jquery.js"></script>
+<script>
+  $(".header").load("header.html");
+
+  const $prev = $(".prev")
+  const $next = $(".next")
+  const $dot = $(".dot")
+  const $slide = $(".slide");
+  const $slideimg = ["./img/Png (1).png","./img/Png (2).png","./img/Png (3).png"];
+  const $text = $(".slide-text");
+  const $textSource = ["the first slide of text","the second slide of text","the third slide of text"];
+  let slide = 0;
+  let text = 0;
+  let title = 0;
+  function nextSlide() {
+    slide = (slide + 1) % $slideimg.length;
+    $slide.attr("src", $slideimg[slide]);
+    text = (text + 1) % $textSource.length;
+    $text.text($textSource[text]);
+  }
+
+  $next.click(nextSlide)
+
+  function prevSlide() {
+    slide = (slide - 1 + $slideimg.length) % $slideimg.length;
+    $slide.attr("src", $slideimg[slide]);
+
+    if (slide === 0) {
+        text = $textSource.length - 1;
+    } else {
+        text = (text - 1 + $textSource.length) % $textSource.length;
+    }
+    $text.text($textSource[text]);
+}
+
+$prev.click(prevSlide);
+
+$(".dot").click(function () {
+
+  $(".dot").css("background-color", "#bbb");
+
+  var n = $(this).data("slide");
+
+  $(this).css("background-color", "rgba(0,0,0,0.8)");
+
+  slide = n % $slideimg.length;
+  $slide.attr("src", $slideimg[slide]);
+  text = n % $textSource.length;
+  $text.text($textSource[text]);
+});
+
+</script>

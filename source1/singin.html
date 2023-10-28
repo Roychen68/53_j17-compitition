@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tickets</title>
+    <link rel="stylesheet" href="./bootstrap.css">
+    <style>
+        body{
+            width: 1920px;
+            height: 1080px;
+        }
+        form{
+            width: 800px;
+            margin: auto;
+            user-select: none;
+        }
+        .form-group{
+            padding: 15px;
+        }
+        form>.btn-primary{
+            width: 100px;
+            font-size: 20px;
+            height: 50px;
+            user-select: none;
+            margin-bottom: 15px;
+        }
+        label{
+            user-select: none;
+        }
+        .input-group{
+            padding: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header"></div>
+    <form action="singin.php" method="post" class="card">
+        <div class="input-group">
+            <div class="input-group-prepend">
+              <label for="ft"><span class="input-group-text">First name/last name</span></label>
+            </div>
+            <input type="text" aria-label="First name" class="form-control" id="ft" name="ft">
+            <input type="text" aria-label="Last name" class="form-control" name="lt">
+          </div>
+        <div class="input-group">
+           <div class="input-group-prepend">
+            <label for="e-mail"><span class="input-group-text">E-mail</span></label>
+          </div>
+          <input type="text" aria-label="e-mail" class="form-control" id="e-mail" name="e-mail">
+        </div> 
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+             <label for="ps"><span class="input-group-text">password</span></label>
+           </div>
+           <input type="text" aria-label="password" class="form-control" id="ps" name="ps">
+         </div> 
+         </div>
+         <div class="input-group">
+            <div class="input-group-prepend">
+             <label for="e-mail"><span class="input-group-text">Verifiaction:<span name='veri' id="veri"></span></span></label>
+           </div>
+           <input type="text" aria-label="verifiaction" class="form-control" id="veri" name='veri'>
+         </div> 
+         </div>
+         <input type="submit" value="send" class="btn btn-primary">
+      </form>
+</body>
+</html>
+<script src="jquery.js"></script>
+<script>
+    $(".header").load("header.html");
+    $("#veri").load("veri.php");
+
+    $("form").submit(function(event) {
+        var password = $("#ps").val();
+        if (password.length < 8) {
+            alert("The password needs to have at least 8 characters.");
+            event.preventDefault();
+        }
+    });
+</script>

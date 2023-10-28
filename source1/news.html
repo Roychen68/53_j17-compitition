@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <style>
+      .card{
+        width: 300px;
+        display: block;
+        flex: none;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .container{
+        margin: auto;
+        width: auto;
+        margin-top: 50px;
+        display: flex;
+      }
+      .card>.card-body>.btn{
+        width: 100px;
+        height: 40px;
+        font-size: 15px;
+      }
+      .card>img{
+        width: 300px;
+      }
+    </style>
+</head>
+<body>
+  <div class="header"></div>
+  <div class="container">
+    <div class="card">
+      <img src="./img/Png (1).png" alt="" class="img1">
+      <div class="card-body">
+        <span>idk what should I type</span>
+        <button class="btn btn-info collapse-btn">read more</button>
+        <p class="collapse3">blablabla</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="./img/Png (2).png" alt="" class="img2">
+      <div class="card-body">
+        <span>bruhhhhhhhhh</span>
+        <button class="btn btn-info collapse-btn">read more</button>
+        <p class="collapse2">blablabla</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="./img/Png (3).png" alt="" class="img3">
+      <div class="card-body">
+        <span>I wish hshs is not that boring</span>
+        <button class="btn btn-info collapse-btn">read more</button>
+        <p class="collapse1">blablabla</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<script src="jquery.js"></script>
+<script>
+  $(".header").load("header.html")
+  $(document).ready(function () {
+    $(".collapse-btn").click(function () {
+      var container = $(this).closest(".card");
+      container.find(".collapse1").slideToggle();
+      $(this).text(function(_, text) {
+        return text === "Read More" ? "Read Less" : "Read More";
+      });
+    })
+  })
+  $(document).ready(function () {
+    $(".collapse-btn").click(function () {
+      var container = $(this).closest(".card");
+      container.find(".collapse2").slideToggle()
+      })
+      $(this).text(function (_, text) {
+        return text === "Read More" ? "Read Less" : "Read More";
+      })
+  })
+  $(document).ready(function () {
+    $(".collapse-btn").click(function () {
+      var container = $(this).closest(".card");
+      container.find(".collapse3").slideToggle()
+    })
+  })
+</script>
